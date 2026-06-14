@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
   "framework": "vite",
-  "outputDirectory": "dist/server",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
