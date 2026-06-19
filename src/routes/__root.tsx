@@ -77,11 +77,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Controle de Gado" },
-      { name: "description", content: "App simples para acompanhar o rebanho da fazenda." },
-      { property: "og:title", content: "Controle de Gado" },
-      { property: "og:description", content: "Acompanhe entrada, saída, peso e valores do gado." },
-      { property: "og:type", content: "website" },
+      { title: "Pasto Vivo — Gestão de Gado" },
+      {
+        name: "description",
+        content: "Gerencie seu rebanho de forma simples e moderna.",
+      },
       { name: "twitter:card", content: "summary" },
     ],
     links: [
@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap",
       },
     ],
   }),

@@ -1,32 +1,41 @@
-export type Cattle = {
+export type Animal = {
   id: string;
   brinco: string;
+  dataEntrada: string;
   pesoEntrada: number;
-  pesoSaida: number | null;
-  dataEntrada: string; // ISO date
-  dataSaida: string | null;
   valorEntrada: number;
-  valorSaida: number | null;
-  remedioFeito: boolean;
+  dataSaida?: string;
+  pesoSaida?: number;
+  valorSaida?: number;
+  medicado: boolean;
 };
 
-const KEY = "cattle.records.v1";
+const KEY = "cattle.animals.v1";
 
-export function loadCattle(): Cattle[] {
+export function loadAnimals(): Animal[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = localStorage.getItem(KEY);
-    return raw ? (JSON.parse(raw) as Cattle[]) : [];
+    if (!raw) return [];
+    return JSON.parse(raw) as Animal[];
   } catch {
     return [];
   }
 }
 
-export function saveCattle(list: Cattle[]) {
+export function saveAnimals(animals: Animal[]) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(KEY, JSON.stringify(list));
+  localStorage.setItem(KEY, JSON.stringify(animals));
 }
 
-export function uid() {
-  return Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+export function formatBRL(v: number | undefined | null) {
+  if (v == null || isNaN(v)) return "—";
+  return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+export function formatDate(d: string | undefined) {
+  if (!d) return "—";
+  const [y, m, day] = d.split("-");
+  if (!y) return d;
+  return `${day}/${m}/${y}`;
 }
